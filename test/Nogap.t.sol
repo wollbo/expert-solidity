@@ -10,7 +10,7 @@ contract NogapTest is Test {
     function setUp() public {
         nogap = new Nogap();
     }
-
+    
     function testGetAtIndex() public {
         uint two = nogap.getAtIndex(2);
         assertEq(two, 2);
@@ -20,7 +20,7 @@ contract NogapTest is Test {
         nogap.deleteAtIndex(2);
         assertEq(nogap.getAtIndex(2), 0);
     }
-
+    
     function testDeleteAndJoin() public {
         nogap.deleteAndJoin(2);
         assertEq(nogap.getAtIndex(2), 3);
@@ -28,5 +28,9 @@ contract NogapTest is Test {
         nogap.deleteAndJoin(5);
         assertEq(nogap.getAtIndex(5), 7);
         assertEq(nogap.getAtIndex(4), 5);
+    }
+    
+    function testPerformanceDeleteAndJoin() public {
+        nogap.deleteAndJoin(1);
     }
 }

@@ -7,7 +7,6 @@ contract Nogap {
     constructor () {
         s_dynamic = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
     }
-
     function getAtIndex(uint _index) public view returns (uint) {
         return s_dynamic[_index];
     }
@@ -19,7 +18,6 @@ contract Nogap {
     function deleteAtIndex(uint _index) public {
         delete s_dynamic[_index];
     }
-
     function deleteAndJoin(uint _index) public {
         uint[] memory dynamic = s_dynamic;
         uint[] memory result = new uint[](dynamic.length-1);
@@ -30,7 +28,10 @@ contract Nogap {
         for(uint i=_index+1;i<dynamic.length;i++){
             result[i-1] = dynamic[i];
         }
-
         s_dynamic = result;
+    }
+
+    function getNumbers() external view returns(uint256[] memory) {
+        return s_dynamic;
     }
 }
