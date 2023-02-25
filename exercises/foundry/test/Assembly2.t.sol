@@ -14,7 +14,7 @@ contract AssemblyTest is Test {
 
     function testReturnCall() public {
         uint call_val = 10;
-        passed.passed{value: call_val}();
-        
+        uint return_val = passed.passed{value: call_val}();
+        assertEq(call_val, return_val);
     }
 }
